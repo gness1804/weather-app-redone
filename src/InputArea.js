@@ -1,10 +1,11 @@
+// @flow
 import React, { Component } from 'react';
 import WeatherButton from './WeatherButton';
 import WeatherList from './WeatherList';
 
 export default class InputArea extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       weather: [],
       city: '',
@@ -12,8 +13,14 @@ export default class InputArea extends Component {
     };
   }
 
+  state: {
+    weather: Array<Object>,
+    city: string,
+    usState: string,
+  }
+
   componentDidMount = () => {
-    const success = (pos) => {
+    const success = (pos: Object) => {
       this.getCoordData(pos.coords.latitude, pos.coords.longitude);
     };
     const failure = () => {
@@ -23,7 +30,7 @@ export default class InputArea extends Component {
     navigator.geolocation.getCurrentPosition(success, failure);
   }
 
-  getCoordData = (lat, lng) => {
+  getCoordData = (lat: string, lng: string) => {
     const hitAPI = new XMLHttpRequest();
     const url = `https://api.wunderground.com/api/47fe8304fc0c9639/geolookup/q/${lat},${lng}.json`;
     hitAPI.open('GET', url, true);
@@ -43,6 +50,10 @@ export default class InputArea extends Component {
     const hitAPI = new XMLHttpRequest();
     const city = this.state.city.toUpperCase();
     const _state = this.state.usState;
+    if (!city || !_state) {
+      alert('You must enter a valid city and state');
+      return;
+    }
     const url = `https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${_state}/${city}.json`;
     hitAPI.open('GET', url, true);
     hitAPI.send();
@@ -56,7 +67,7 @@ export default class InputArea extends Component {
     };
   };
 
-  handleInputChange = (e) => {
+  handleInputChange = (e: Object) => {
     if (e.keyCode === 13) {
       this.getWeatherData();
       return;
@@ -64,7 +75,7 @@ export default class InputArea extends Component {
     this.setState({ city: e.target.value });
   }
 
-  handleInputChangeState = (e) => {
+  handleInputChangeState = (e: Object) => {
     this.setState({ usState: e.target.value });
   }
 
@@ -102,7 +113,6 @@ export default class InputArea extends Component {
               list="us-state-list"
               onChange={this.handleInputChangeState}
               value={this.state.usState}
-              onKeyDown={this.enterFunctionality}
             />
             <datalist id="us-state-list">
               <option value="AL">Alabama</option>

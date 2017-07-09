@@ -1,9 +1,10 @@
+// @flow
 import React from 'react';
 import WeatherCard from './WeatherCard';
 
-const WeatherList = ({ ...props }) => {
+const WeatherList = ({ ...props }: Object) => {
   /* eslint-disable camelcase */
-  const showWeatherData = (data) => {
+  const showWeatherData = (data: Object) => {
     const { title, icon_url, fcttext, pop } = data;
     return (<div>
       <WeatherCard
