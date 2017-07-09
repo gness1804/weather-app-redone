@@ -19,7 +19,7 @@ export default class InputArea extends Component {
     usState: string,
   }
 
-  componentDidMount = () => {
+  componentDidMount = (): void => {
     const success = (pos: Object) => {
       this.getCoordData(pos.coords.latitude, pos.coords.longitude);
     };
@@ -30,7 +30,7 @@ export default class InputArea extends Component {
     navigator.geolocation.getCurrentPosition(success, failure);
   }
 
-  getCoordData = (lat: string, lng: string) => {
+  getCoordData = (lat: string, lng: string): void => {
     const hitAPI = new XMLHttpRequest();
     const url = `https://api.wunderground.com/api/47fe8304fc0c9639/geolookup/q/${lat},${lng}.json`;
     hitAPI.open('GET', url, true);
@@ -46,7 +46,7 @@ export default class InputArea extends Component {
     };
   };
 
-  getWeatherData = () => {
+  getWeatherData = (): void => {
     const hitAPI = new XMLHttpRequest();
     const city = this.state.city.toUpperCase();
     const _state = this.state.usState;
@@ -67,7 +67,7 @@ export default class InputArea extends Component {
     };
   };
 
-  handleInputChange = (e: Object) => {
+  handleInputChange = (e: Object): void => {
     if (e.keyCode === 13) {
       this.getWeatherData();
       return;
@@ -75,7 +75,7 @@ export default class InputArea extends Component {
     this.setState({ city: e.target.value });
   }
 
-  handleInputChangeState = (e: Object) => {
+  handleInputChangeState = (e: Object): void => {
     this.setState({ usState: e.target.value });
   }
 
