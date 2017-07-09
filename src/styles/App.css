@@ -44,6 +44,7 @@ fieldset {
   border: 1px solid #000;
   border-radius: 0.3125rem;
   margin: 0.625rem 1rem;
+  padding: 0 1rem;
 }
 
 .weather-card {
