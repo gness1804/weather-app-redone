@@ -1,9 +1,14 @@
 html {
   background-color: #CCC;
+  font-family: 'Roboto', serif;
 }
 
-h1, h3, p, button, label, input, option, li {
-  font-family: 'Roboto', serif;
+header {
+  height: 350px;
+}
+
+.container {
+  text-align: center;
 }
 
 fieldset {
@@ -12,9 +17,5 @@ fieldset {
   letter-spacing: 2px;
   font-size: 18px;
   margin: 10px;
-}
-
-header {
-  height: 350px;
 }
 
