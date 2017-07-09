@@ -18,9 +18,9 @@ const WeatherList = ({ ...props }: Object) => {
   /* eslint-enable camelcase */
 
   return (
-    <ul>
-      <li>{props.data.map(showWeatherData)}</li>
-    </ul>
+    <div>
+      {props.data.map(showWeatherData)}
+    </div>
   );
 };
 

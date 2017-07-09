@@ -107,12 +107,6 @@ export default class InputArea extends Component {
             </datalist>
           </label>
           <label htmlFor="us-state-input" className="fieldset-right-item"><span>Your State:</span>
-            {/*<input
-              id="us-state-input"
-              type="text"
-              onChange={this.handleInputChangeState}
-              value={this.state.usState}
-            />*/}
             <select
               id="us-state-list"
               onChange={this.handleInputChangeState}
