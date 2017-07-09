@@ -27,6 +27,18 @@ fieldset {
   margin: 0.625rem 1rem;
 }
 
+.fieldset-left-item {
+  margin-right: 1rem;
+}
+
+.fieldset-left-item span {
+  margin-right: 0.5rem;
+}
+
+.fieldset-right-item span {
+  margin-right: 0.5rem;
+}
+
 li {
   list-style-type: none;
 }

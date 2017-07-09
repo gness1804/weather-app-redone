@@ -83,7 +83,7 @@ export default class InputArea extends Component {
     return (
       <div>
         <fieldset>
-          <label htmlFor="current-location-input" className="fieldset-left-item">Your City:
+          <label htmlFor="current-location-input" className="fieldset-left-item"><span>Your City:</span>
             <input
               id="current-location-input"
               type="text"
@@ -105,7 +105,7 @@ export default class InputArea extends Component {
               <option value="St Louis">St Louis</option>
             </datalist>
           </label>
-          <label htmlFor="us-state-input" className="fieldset-right-item">Your State:
+          <label htmlFor="us-state-input" className="fieldset-right-item"><span>Your State:</span>
             <input
               id="us-state-input"
               type="text"
