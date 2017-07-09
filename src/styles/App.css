@@ -1,10 +1,15 @@
+@import 'text.css';
+
 html {
   background-color: #CCC;
   font-family: 'Roboto', serif;
 }
 
 header {
+  border: 1px solid #000;
+  border-radius: 0.3125rem;
   height: 350px;
+  margin: 0.625rem 1rem;
 }
 
 .container {
@@ -12,11 +17,13 @@ header {
 }
 
 fieldset {
+  border: 1px solid #000;
+  border-radius: 0.3125rem;
   text-align: center;
   padding: 10px;
   letter-spacing: 2px;
   font-size: 18px;
-  margin: 10px;
+  margin: 0.625rem 1rem;
 }
 
 li {
