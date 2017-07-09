@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import WeatherButton from './WeatherButton';
 import WeatherList from './WeatherList';
 
@@ -21,13 +20,13 @@ export default class InputArea extends Component {
     hitAPI.open('GET', url, true);
     hitAPI.send();
     hitAPI.onreadystatechange = () => {
-    if (hitAPI.readyState === XMLHttpRequest.DONE) {
-      if (hitAPI.status === 200) {
-        const data = JSON.parse(hitAPI.responseText);
-        this.setState({ weather: data.forecast.txt_forecast.forecastday });
+      if (hitAPI.readyState === XMLHttpRequest.DONE) {
+        if (hitAPI.status === 200) {
+          const data = JSON.parse(hitAPI.responseText);
+          this.setState({ weather: data.forecast.txt_forecast.forecastday });
+        }
       }
-    }
-  };
+    };
   };
 
   handleInputChange = (e) => {

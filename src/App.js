@@ -6,11 +6,11 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-    <div className="GetWeather">
-      <Header />
-      <InputArea />
-    </div>
-  );
+      <div className="GetWeather">
+        <Header />
+        <InputArea />
+      </div>
+    );
   }
 }
 

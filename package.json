@@ -3,16 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "1.0.10"
+    "react-scripts": "1.0.10",
+    "babel-cli": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.47.0"
   },
   "dependencies": {
+    "chai": "^4.0.2",
+    "enzyme": "^2.9.1",
+    "eslint-config-airbnb": "^15.0.1",
+    "flow-remove-types": "^1.2.1",
+    "mocha": "^3.4.2",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "selenium-webdriver": "^3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "mocha",
+    "lint": "eslint src test",
+    "flow": "flow",
     "eject": "react-scripts eject"
   }
 }
