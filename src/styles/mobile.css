@@ -1,0 +1,9 @@
+@media screen and (max-width: 700px) {
+  .fieldset-left-item, .fieldset-right-item {
+    display: block;
+  }
+
+  .fieldset-left-item {
+    margin-bottom: 1rem;
+  }
+}

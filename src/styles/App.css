@@ -1,6 +1,7 @@
 @import 'text.css';
 @import 'links.css';
 @import 'buttons.css';
+@import 'mobile.css';
 
 html {
   background-color: #CCC;
