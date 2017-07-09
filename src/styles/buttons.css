@@ -28,3 +28,7 @@ button:hover {
 .unstyled-button:hover {
   background-color: inherit;
 }
+
+.clear-city-icon {
+  margin-left: 0.5rem;
+}

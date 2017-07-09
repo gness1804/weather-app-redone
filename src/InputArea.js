@@ -109,7 +109,7 @@ export default class InputArea extends Component {
               <option value="San Francisco">San Francisco</option>
               <option value="St Louis">St Louis</option>
             </datalist>
-            <button onClick={this.clearCity} className="unstyled-button">
+            <button onClick={this.clearCity} className="unstyled-button clear-city-icon">
               <img src="cancel-circle.png" alt="Clear city field." />
             </button>
           </label>
