@@ -7,24 +7,41 @@ export default class InputArea extends Component {
     super(props);
     this.state = {
       weather: [],
-      location: 'Denver',
-      usState: 'CO',
+      city: '',
+      usState: '',
     };
   }
 
   componentDidMount = () => {
-    const resolve = () => {
-
+    const success = (pos) => {
+      this.getCoordData(pos.coords.latitude, pos.coords.longitude);
     };
-    const reject = () => {
-      throw new Error('There was a problem.');
+    const failure = () => {
+      this.setState({ city: 'Denver' });
+      this.setState({ usState: 'CO' });
     };
-    navigator.geolocation.getCurrentPosition(resolve, reject);
+    navigator.geolocation.getCurrentPosition(success, failure);
   }
+
+  getCoordData = (lat, lng) => {
+    const hitAPI = new XMLHttpRequest();
+    const url = `https://api.wunderground.com/api/47fe8304fc0c9639/geolookup/q/${lat},${lng}.json`;
+    hitAPI.open('GET', url, true);
+    hitAPI.send();
+    hitAPI.onreadystatechange = () => {
+      if (hitAPI.readyState === XMLHttpRequest.DONE) {
+        if (hitAPI.status === 200) {
+          const data = JSON.parse(hitAPI.responseText);
+          this.setState({ city: data.location.city });
+          this.setState({ usState: data.location.state });
+        }
+      }
+    };
+  };
 
   getWeatherData = () => {
     const hitAPI = new XMLHttpRequest();
-    const city = this.state.location.toUpperCase();
+    const city = this.state.city.toUpperCase();
     const _state = this.state.usState;
     const url = `https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${_state}/${city}.json`;
     hitAPI.open('GET', url, true);
@@ -44,7 +61,7 @@ export default class InputArea extends Component {
       this.getWeatherData();
       return;
     }
-    this.setState({ location: e.target.value });
+    this.setState({ city: e.target.value });
   }
 
   handleInputChangeState = (e) => {
@@ -62,7 +79,7 @@ export default class InputArea extends Component {
               placeholder="City"
               list="current-loc-list"
               onChange={this.handleInputChange}
-              value={this.state.location}
+              value={this.state.city}
             />
             <datalist id="current-loc-list">
               <option value="Atlanta">Atlanta</option>
@@ -143,7 +160,7 @@ export default class InputArea extends Component {
           </label>
         </fieldset>
         <WeatherButton id="get-weather-button" text="Get Weather" handleClick={this.getWeatherData} />
-        <WeatherList data={this.state.weather} city={this.state.location} />
+        <WeatherList data={this.state.weather} city={this.state.city} />
       </div>
     );
   }
