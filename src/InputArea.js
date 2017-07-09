@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import WeatherButton from './WeatherButton';
 import WeatherList from './WeatherList';
+import NoWeatherData from './NoWeatherData';
 
 export default class InputArea extends Component {
   constructor() {
@@ -170,7 +171,9 @@ export default class InputArea extends Component {
           </label>
         </fieldset>
         <WeatherButton id="get-weather-button" text="Get Weather" handleClick={this.getWeatherData} />
-        <WeatherList data={this.state.weather} city={this.state.city} />
+        {this.state.weather.length ? <div className="weather-list-container">
+          <WeatherList data={this.state.weather} city={this.state.city} />
+        </div> : <NoWeatherData />}
       </div>
     );
   }

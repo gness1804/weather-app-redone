@@ -11,3 +11,8 @@ button:hover {
   background-color:rgb(136, 135, 209);
   cursor: pointer;
 }
+
+#get-weather-button {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}

@@ -40,6 +40,18 @@ fieldset {
   margin-right: 0.5rem;
 }
 
+.weather-list-container {
+  border: 1px solid #000;
+  border-radius: 0.3125rem;
+  margin: 0.625rem 1rem;
+}
+
+.weather-card {
+  border: 1px solid #000;
+  border-radius: 0.3125rem;
+  margin: 0.625rem 1rem;
+}
+
 li {
   list-style-type: none;
 }
