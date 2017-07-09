@@ -1,0 +1,20 @@
+html {
+  background-color: #CCC;
+}
+
+h1, h3, p, button, label, input, option, li {
+  font-family: 'Roboto', serif;
+}
+
+fieldset {
+  text-align: center;
+  padding: 10px;
+  letter-spacing: 2px;
+  font-size: 18px;
+  margin: 10px;
+}
+
+header {
+  height: 350px;
+}
+

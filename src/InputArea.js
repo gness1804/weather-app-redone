@@ -12,6 +12,16 @@ export default class InputArea extends Component {
     };
   }
 
+  componentDidMount = () => {
+    const resolve = () => {
+
+    };
+    const reject = () => {
+      throw new Error('There was a problem.');
+    };
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  }
+
   getWeatherData = () => {
     const hitAPI = new XMLHttpRequest();
     const city = this.state.location.toUpperCase();
