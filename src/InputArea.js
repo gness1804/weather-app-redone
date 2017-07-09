@@ -107,15 +107,17 @@ export default class InputArea extends Component {
             </datalist>
           </label>
           <label htmlFor="us-state-input" className="fieldset-right-item"><span>Your State:</span>
-            <input
+            {/*<input
               id="us-state-input"
               type="text"
-              placeholder="State"
-              list="us-state-list"
               onChange={this.handleInputChangeState}
               value={this.state.usState}
-            />
-            <datalist id="us-state-list">
+            />*/}
+            <select
+              id="us-state-list"
+              onChange={this.handleInputChangeState}
+              value={this.state.usState}
+            >
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -167,7 +169,7 @@ export default class InputArea extends Component {
               <option value="WV">West Virginia</option>
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
-            </datalist>
+            </select>
           </label>
         </fieldset>
         <WeatherButton id="get-weather-button" text="Get Weather" handleClick={this.getWeatherData} />
