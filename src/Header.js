@@ -8,7 +8,7 @@ const Header = () => {
       <h3>Your World<br />Your Weather</h3>
       <a className="wu-logo-link-wrapper" href="https://www.wunderground.com/" target="_blank" rel="noopener noreferrer">
         <figure className="wu-logo-container">
-          <img src="images/wu-logo.jpg" alt="Weather Underground logo." />
+          <img src="wu-logo.jpg" alt="Weather Underground logo." />
           <figcaption className="wu-logo-caption-text">Data courtesy of Weather Underground.</figcaption>
         </figure>
       </a>
