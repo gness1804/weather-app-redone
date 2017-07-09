@@ -52,7 +52,7 @@ export default class InputArea extends Component {
     const city = this.state.city.toUpperCase();
     const _state = this.state.usState;
     if (!city || !_state) {
-      alert('You must enter a valid city and state');
+      alert('Error: you must enter a valid city and state.');
       return;
     }
     const url = `https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${_state}/${city}.json`;
@@ -67,6 +67,10 @@ export default class InputArea extends Component {
       }
     };
   };
+
+  clearCity = (): void => {
+    this.setState({ city: '' });
+  }
 
   handleInputChange = (e: Object): void => {
     if (e.keyCode === 13) {
@@ -105,6 +109,9 @@ export default class InputArea extends Component {
               <option value="San Francisco">San Francisco</option>
               <option value="St Louis">St Louis</option>
             </datalist>
+            <button onClick={this.clearCity} className="unstyled-button">
+              <img src="cancel-circle.png" alt="Clear city field." />
+            </button>
           </label>
           <label htmlFor="us-state-input" className="fieldset-right-item"><span>Your State:</span>
             <select

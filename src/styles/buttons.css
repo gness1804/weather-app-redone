@@ -16,3 +16,15 @@ button:hover {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
+
+.unstyled-button {
+  background-color: inherit;
+  border: inherit;
+  border-radius: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+.unstyled-button:hover {
+  background-color: inherit;
+}
