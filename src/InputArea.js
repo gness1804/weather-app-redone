@@ -10,7 +10,7 @@ const InputArea = observer(() => {
   const getWeatherData = (): void => {
     const hitAPI = new XMLHttpRequest();
     const city = store.city.toUpperCase();
-    const _state = store.usState;
+    const _state = store.state;
     if (!city || !_state) {
       alert('Error: you must enter a valid city and state.');
       return;
@@ -72,7 +72,7 @@ const InputArea = observer(() => {
           <select
             id="us-state-list"
             onChange={handleInputChangeState}
-            value={store.usState}
+            value={store.state}
           >
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -146,7 +146,7 @@ export default InputArea;
   //   };
   //   const failure = () => {
   //     this.setState({ city: 'Denver' });
-  //     this.setState({ usState: 'CO' });
+  //     this.setState({ state: 'CO' });
   //   };
   //   navigator.geolocation.getCurrentPosition(success, failure);
   // }
@@ -161,7 +161,7 @@ export default InputArea;
   //       if (hitAPI.status === 200) {
   //         const data = JSON.parse(hitAPI.responseText);
   //         this.setState({ city: data.location.city });
-  //         this.setState({ usState: data.location.state });
+  //         this.setState({ state: data.location.state });
   //       }
   //     }
   //   };

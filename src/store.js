@@ -4,7 +4,7 @@ import { observable } from 'mobx';
 const store = observable({
   weather: [],
   city: 'Denver',
-  usState: 'CO',
+  state: 'CO',
 
   setWeather(data: Array<Object>): void {
     if (Array.isArray(data)) {
@@ -21,7 +21,7 @@ const store = observable({
   },
 
   set_State(val: string): void {
-    this.usState = val;
+    this.state = val;
   },
 });
 
