@@ -4,6 +4,7 @@ import ReactQueryParams from 'react-query-params';
 import WeatherButton from './WeatherButton';
 import WeatherList from './WeatherList';
 import NoWeatherData from './NoWeatherData';
+import abbrState from './helpers/abbrState';
 
 export default class InputArea extends ReactQueryParams {
   constructor(props: Object) {
@@ -35,7 +36,7 @@ export default class InputArea extends ReactQueryParams {
         resolve(this.setState({ city }));
       });
       promise.then(() => {
-        this.setState({ state: state.toUpperCase() });
+        this.setState({ state: abbrState(state, 'abbr') });
       })
       .then(() => {
         this.getWeatherData();
