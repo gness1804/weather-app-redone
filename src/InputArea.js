@@ -1,12 +1,13 @@
 // @flow
-import React, { Component } from 'react';
+import React from 'react';
+import ReactQueryParams from 'react-query-params';
 import WeatherButton from './WeatherButton';
 import WeatherList from './WeatherList';
 import NoWeatherData from './NoWeatherData';
 
-export default class InputArea extends Component {
-  constructor() {
-    super();
+export default class InputArea extends ReactQueryParams {
+  constructor(props: Object) {
+    super(props);
     this.state = {
       weather: [],
       city: '',
@@ -21,6 +22,7 @@ export default class InputArea extends Component {
   }
 
   componentDidMount = (): void => {
+    const { city, state } = this.queryParams;
     const success = (pos: Object) => {
       this.getCoordData(pos.coords.latitude, pos.coords.longitude);
     };
@@ -28,6 +30,11 @@ export default class InputArea extends Component {
       this.setState({ city: 'Denver' });
       this.setState({ usState: 'CO' });
     };
+    if (city && state) {
+      this.setState({ city });
+      this.setState({ usState: state.toUpperCase() });
+      return;
+    }
     navigator.geolocation.getCurrentPosition(success, failure);
   }
 
