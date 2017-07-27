@@ -141,8 +141,9 @@ export default class InputArea extends ReactQueryParams {
             <select
               id="us-state-list"
               onChange={this.handleInputChangeState}
-              value={this.state.state}
+              value={this.state.state || 'default'}
             >
+              <option value="default">Choose a State</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
