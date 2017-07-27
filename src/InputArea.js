@@ -36,7 +36,11 @@ export default class InputArea extends ReactQueryParams {
         resolve(this.setState({ city }));
       });
       promise.then(() => {
-        this.setState({ state: abbrState(state, 'abbr') });
+        if (state.length === 2) {
+          this.setState({ state: state.toUpperCase() });
+        } else {
+          this.setState({ state: abbrState(state, 'abbr') });
+        }
       })
       .then(() => {
         this.getWeatherData();
