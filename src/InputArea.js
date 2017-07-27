@@ -11,14 +11,14 @@ export default class InputArea extends ReactQueryParams {
     this.state = {
       weather: [],
       city: '',
-      usState: '',
+      state: '',
     };
   }
 
   state: {
     weather: Array<Object>,
     city: string,
-    usState: string,
+    state: string,
   }
 
   componentDidMount = (): void => {
@@ -28,14 +28,14 @@ export default class InputArea extends ReactQueryParams {
     };
     const failure = () => {
       this.setState({ city: 'Denver' });
-      this.setState({ usState: 'CO' });
+      this.setState({ state: 'CO' });
     };
     if (city && state) {
       const promise = new Promise((resolve) => {
         resolve(this.setState({ city }));
       });
       promise.then(() => {
-        this.setState({ usState: state.toUpperCase() });
+        this.setState({ state: state.toUpperCase() });
       })
       .then(() => {
         this.getWeatherData();
@@ -56,7 +56,7 @@ export default class InputArea extends ReactQueryParams {
         if (hitAPI.status === 200) {
           const data = JSON.parse(hitAPI.responseText);
           this.setState({ city: data.location.city });
-          this.setState({ usState: data.location.state });
+          this.setState({ state: data.location.state });
         }
       }
     };
@@ -65,7 +65,7 @@ export default class InputArea extends ReactQueryParams {
   getWeatherData = (): void => {
     const hitAPI = new XMLHttpRequest();
     const city = this.state.city.toUpperCase();
-    const _state = this.state.usState;
+    const _state = this.state.state;
     if (!city || !_state) {
       alert('Error: you must enter a valid city and state.');
       return;
@@ -100,7 +100,7 @@ export default class InputArea extends ReactQueryParams {
   }
 
   handleInputChangeState = (e: Object): void => {
-    this.setState({ usState: e.target.value });
+    this.setState({ state: e.target.value });
   }
 
   render() {
@@ -136,7 +136,7 @@ export default class InputArea extends ReactQueryParams {
             <select
               id="us-state-list"
               onChange={this.handleInputChangeState}
-              value={this.state.usState}
+              value={this.state.state}
             >
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
