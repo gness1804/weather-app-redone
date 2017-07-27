@@ -1,8 +1,9 @@
 // credit: https://gist.github.com/CalebGrove/c285a9510948b633aa47
 // this has been modified from the original code
+// @flow
 
-const abbrState = (input, to) => {
-  let result = null;
+const abbrState = (input: string, to: string): string => {
+  let result = '';
   const states = [
       ['Alabama', 'AL'],
       ['Alaska', 'AK'],
@@ -58,7 +59,7 @@ const abbrState = (input, to) => {
   ];
 
   if (to === 'abbr') {
-    const _input = input.replace(/\w\S*/g, (txt) => {
+    const _input = input.replace(/\w\S*/g, (txt: string): string => {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
     for (let i = 0; i < states.length; i++) {
