@@ -31,8 +31,16 @@ export default class InputArea extends ReactQueryParams {
       this.setState({ usState: 'CO' });
     };
     if (city && state) {
-      this.setState({ city });
-      this.setState({ usState: state.toUpperCase() });
+      const promise = new Promise((resolve) => {
+        resolve(this.setState({ city }));
+      });
+      promise.then(() => {
+        this.setState({ usState: state.toUpperCase() });
+      })
+      .then(() => {
+        this.getWeatherData();
+      })
+      .catch((err) => { throw new Error(err); });
       return;
     }
     navigator.geolocation.getCurrentPosition(success, failure);
@@ -69,7 +77,11 @@ export default class InputArea extends ReactQueryParams {
       if (hitAPI.readyState === XMLHttpRequest.DONE) {
         if (hitAPI.status === 200) {
           const data = JSON.parse(hitAPI.responseText);
-          this.setState({ weather: data.forecast.txt_forecast.forecastday });
+          if (data && data.forecast && typeof data.forecast !== 'undefined') {
+            this.setState({ weather: data.forecast.txt_forecast.forecastday });
+          } else {
+            alert('Oops, bad data. Please check your city and state and try again.');
+          }
         }
       }
     };
