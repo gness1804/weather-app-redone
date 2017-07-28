@@ -2,6 +2,7 @@
   "name": "weather-take-2",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://gness1804.github.io/weather-app-redone/",
   "devDependencies": {
     "react-scripts": "1.0.10",
     "babel-cli": "^6.24.1",
