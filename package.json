@@ -2,12 +2,13 @@
   "name": "weather-take-2",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://gness1804.github.io/weather-app-redone/",
+  "homepage": "https://gness1804.github.io/weather-app-redone/",
   "devDependencies": {
-    "react-scripts": "1.0.10",
     "babel-cli": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.47.0"
+    "flow-bin": "^0.47.0",
+    "gh-pages": "^1.0.0",
+    "react-scripts": "1.0.10"
   },
   "dependencies": {
     "chai": "^4.0.2",
@@ -26,6 +27,8 @@
     "test": "mocha",
     "lint": "eslint src test",
     "flow": "flow",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
