@@ -2,6 +2,8 @@
 
 ![Screenshot](public/screenshot-1.png)
 
+[Check it out!](https://gness1804.github.io/weather-app-redone/)
+
 This is an update for my [Weather App Real API](https://github.com/gness1804/weather-app-real-api). It is rebuilt with [Create React App](https://github.com/facebookincubator/create-react-app) in order to solve some ES6 issues and simplify configuration.
 
 *In this app, the user can:*
