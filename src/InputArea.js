@@ -22,7 +22,7 @@ export default class InputArea extends ReactQueryParams {
     state: string,
   }
 
-  componentDidMount = (): void => {
+  componentDidMount = async (): void => {
     const { city, state } = this.queryParams;
     const success = (pos: Object) => {
       this.getCoordData(pos.coords.latitude, pos.coords.longitude);
@@ -32,20 +32,17 @@ export default class InputArea extends ReactQueryParams {
       this.setState({ state: 'CO' });
     };
     if (city && state) {
-      const promise = new Promise((resolve) => {
-        resolve(this.setState({ city }));
-      });
-      promise.then(() => {
-        if (state.length === 2) {
-          this.setState({ state: state.toUpperCase() });
-        } else {
-          this.setState({ state: abbrState(state, 'abbr') });
-        }
-      })
-      .then(() => {
-        this.getWeatherData();
-      })
-      .catch((err) => { throw new Error(err); });
+      await this.setState({ city });
+      if (state.length === 2) {
+        this.setState({ state: state.toUpperCase() });
+      } else {
+        this.setState({ state: abbrState(state, 'abbr') });
+      }
+      try {
+        await this.getWeatherData();
+      } catch (error) {
+        throw new Error(error);
+      }
       return;
     }
     navigator.geolocation.getCurrentPosition(success, failure);
