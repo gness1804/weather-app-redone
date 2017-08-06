@@ -1,4 +1,9 @@
 @media screen and (max-width: 700px) {
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
   .fieldset-left-item, .fieldset-right-item {
     display: block;
   }
