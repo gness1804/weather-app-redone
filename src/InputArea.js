@@ -130,6 +130,10 @@ export default class InputArea extends ReactQueryParams {
     };
   };
 
+  hideSunriseSunset = (): void => {
+    this.setState({ showSunriseSunset: false });
+  }
+
   clearCity = (): void => {
     this.setState({ city: '' });
   }
@@ -236,7 +240,7 @@ export default class InputArea extends ReactQueryParams {
             </select>
           </label>
         </fieldset>
-        {this.state.showSunriseSunset && this.state.sunriseHour && this.state.sunsetHour ? <SunriseSunset {...this.state} /> : ''}
+        {this.state.showSunriseSunset && this.state.sunriseHour && this.state.sunsetHour ? <SunriseSunset {...this.state} hideSunriseSunset={this.hideSunriseSunset} /> : ''}
         <button onClick={this.getSunriseSunset}>Get Sunrise/Sunset</button>
         <WeatherButton id="get-weather-button" text="Get Weather" handleClick={this.getWeatherData} />
         {this.state.weather.length ? <div className="weather-list-container">
