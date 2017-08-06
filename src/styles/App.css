@@ -15,6 +15,14 @@ header {
   margin: 0.625rem 1rem;
 }
 
+.box {
+  box-shadow: 0.2rem 0.2rem #797575
+}
+
+.small-box {
+  box-shadow: 0.1rem 0.1rem #797575;
+}
+
 .container {
   text-align: center;
 }

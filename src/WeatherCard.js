@@ -3,7 +3,7 @@ import React from 'react';
 const WeatherCard = ({ ...props }: Object) => {
   const { time, icon, forecast, precipitation } = props;
   return (
-    <div className="weather-card">
+    <div className="weather-card small-box">
       <h2 className="weather-card-title">Time Period: {time}</h2>
       <img className="weather-card-img" src={icon} alt="Icon representing the weather for the day." />
       <p className="weather-card-text">Forecast: {forecast}</p>

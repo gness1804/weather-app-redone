@@ -155,7 +155,7 @@ export default class InputArea extends ReactQueryParams {
   render() {
     return (
       <div>
-        <fieldset>
+        <fieldset className="box">
           <label htmlFor="current-location-input" className="fieldset-left-item"><span>Your City:</span>
             <input
               id="current-location-input"
@@ -245,7 +245,7 @@ export default class InputArea extends ReactQueryParams {
         {this.state.showSunriseSunset && this.state.sunriseHour && this.state.sunriseMinute && this.state.sunsetHour && this.state.sunsetMinute ? <SunriseSunset {...this.state} hideSunriseSunset={this.hideSunriseSunset} /> : ''}
         <button id="get-sunrise-sunset-button" onClick={this.getSunriseSunset}>Get Sunrise/Sunset</button>
         <WeatherButton id="get-weather-button" text="Get Weather" handleClick={this.getWeatherData} />
-        {this.state.weather.length ? <div className="weather-list-container">
+        {this.state.weather.length ? <div className="weather-list-container box">
           <WeatherList data={this.state.weather} city={this.state.city} />
         </div> : <NoWeatherData />}
       </div>
