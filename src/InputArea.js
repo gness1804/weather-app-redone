@@ -123,6 +123,7 @@ export default class InputArea extends ReactQueryParams {
             this.setState({ sunsetHour: data.sun_phase.sunset.hour });
             this.setState({ sunsetMinute: data.sun_phase.sunset.minute });
             this.setState({ showSunriseSunset: true });
+            this.setState({ weather: [] });
           } else {
             alert('Oops, bad data. Please check your city and state and try again.');
           }
