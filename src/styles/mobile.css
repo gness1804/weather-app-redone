@@ -6,4 +6,8 @@
   .fieldset-left-item {
     margin-bottom: 1rem;
   }
+
+  .wu-logo-container img {
+    max-width: 70%;
+  }
 }
