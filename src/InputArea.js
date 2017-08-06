@@ -83,6 +83,7 @@ export default class InputArea extends ReactQueryParams {
       alert('Error: you must enter a valid city and state.');
       return;
     }
+    this.setState({ showSunriseSunset: false });
     const url = `https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${_state}/${city}.json`;
     hitAPI.open('GET', url, true);
     hitAPI.send();
