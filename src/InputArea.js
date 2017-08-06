@@ -110,7 +110,7 @@ export default class InputArea extends ReactQueryParams {
       this.setState({ showSunriseSunset: false });
       return;
     }
-    const url = `http://api.wunderground.com/api/47fe8304fc0c9639/astronomy/q/${_state}/${city}.json`;
+    const url = `https://api.wunderground.com/api/47fe8304fc0c9639/astronomy/q/${_state}/${city}.json`;
     hitAPI.open('GET', url, true);
     hitAPI.send();
     hitAPI.onreadystatechange = () => {
