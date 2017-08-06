@@ -17,6 +17,7 @@ export default class InputArea extends ReactQueryParams {
       sunriseMinute: '',
       sunsetHour: '',
       sunsetMinute: '',
+      showSunriseSunset: false,
     };
   }
 
@@ -28,6 +29,7 @@ export default class InputArea extends ReactQueryParams {
     sunriseMinute: string,
     sunsetHour: string,
     sunsetMinute: string,
+    showSunriseSunset: boolean,
   }
 
   componentDidMount = async (): void => {
@@ -103,6 +105,7 @@ export default class InputArea extends ReactQueryParams {
     const _state = this.state.state;
     if (!city || !_state) {
       alert('Error: you must enter a valid city and state.');
+      this.setState({ showSunriseSunset: false });
       return;
     }
     const url = `http://api.wunderground.com/api/47fe8304fc0c9639/astronomy/q/${_state}/${city}.json`;
@@ -117,6 +120,7 @@ export default class InputArea extends ReactQueryParams {
             this.setState({ sunriseMinute: data.sun_phase.sunrise.minute });
             this.setState({ sunsetHour: data.sun_phase.sunset.hour });
             this.setState({ sunsetMinute: data.sun_phase.sunset.minute });
+            this.setState({ showSunriseSunset: true });
           } else {
             alert('Oops, bad data. Please check your city and state and try again.');
           }
@@ -231,6 +235,7 @@ export default class InputArea extends ReactQueryParams {
             </select>
           </label>
         </fieldset>
+        {this.state.showSunriseSunset && this.state.sunriseHour && this.state.sunsetHour ? 'foo' : 'bar'}
         <button onClick={this.getSunriseSunset}>Get Sunrise/Sunset</button>
         <WeatherButton id="get-weather-button" text="Get Weather" handleClick={this.getWeatherData} />
         {this.state.weather.length ? <div className="weather-list-container">
