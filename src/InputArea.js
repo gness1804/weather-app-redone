@@ -4,6 +4,7 @@ import ReactQueryParams from 'react-query-params';
 import WeatherButton from './WeatherButton';
 import WeatherList from './WeatherList';
 import NoWeatherData from './NoWeatherData';
+import SunriseSunset from './SunriseSunset';
 import abbrState from './helpers/abbrState';
 
 export default class InputArea extends ReactQueryParams {
@@ -235,7 +236,7 @@ export default class InputArea extends ReactQueryParams {
             </select>
           </label>
         </fieldset>
-        {this.state.showSunriseSunset && this.state.sunriseHour && this.state.sunsetHour ? 'foo' : 'bar'}
+        {this.state.showSunriseSunset && this.state.sunriseHour && this.state.sunsetHour ? <SunriseSunset /> : ''}
         <button onClick={this.getSunriseSunset}>Get Sunrise/Sunset</button>
         <WeatherButton id="get-weather-button" text="Get Weather" handleClick={this.getWeatherData} />
         {this.state.weather.length ? <div className="weather-list-container">
