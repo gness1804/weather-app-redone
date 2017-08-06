@@ -19,4 +19,8 @@
     height: 2rem;
     margin-top: 1rem;
   }
+
+  .hide-sunrise-sunset-button img {
+    height: 2rem;
+  }
 }
