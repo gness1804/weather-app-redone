@@ -5,3 +5,7 @@ h3 {
 .wu-logo-caption-text {
   margin-top: 0.75rem;
 }
+
+.sunrise-sunset-container .time {
+  font-weight: 700;
+}

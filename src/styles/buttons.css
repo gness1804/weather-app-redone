@@ -32,3 +32,11 @@ button:hover {
 .clear-city-icon {
   margin-left: 0.5rem;
 }
+
+.hide-sunrise-sunset-button {
+ background-color: inherit;
+}
+
+.hide-sunrise-sunset-button:hover {
+  background-color: inherit;
+}

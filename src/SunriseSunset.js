@@ -6,9 +6,9 @@ const SunriseSunset = ({ ...props }: Object) => {
     props.hideSunriseSunset();
   };
   return (
-    <div>
-      <p>Sunrise is at {props.sunriseHour}:{props.sunriseMinute}.</p>
-      <p>Sunset is at {props.sunsetHour}:{props.sunsetMinute}.</p>
+    <div className="sunrise-sunset-container">
+      <p>Sunrise is at <span className="time">{props.sunriseHour}:{props.sunriseMinute}</span>.</p>
+      <p>Sunset is at <span className="time">{props.sunsetHour}:{props.sunsetMinute}</span>.</p>
       <button onClick={hideSunriseSunset} className="hide-sunrise-sunset-button">
         <img src="cancel-circle.png" alt="Hide sunrise sunset view." />
       </button>
