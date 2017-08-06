@@ -40,3 +40,7 @@ button:hover {
 .hide-sunrise-sunset-button:hover {
   background-color: inherit;
 }
+
+#get-sunrise-sunset-button {
+  margin-right: 1.5rem;
+}
