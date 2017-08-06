@@ -1,10 +1,11 @@
 // @flow
 import React from 'react';
 
-const SunriseSunset = () => {
+const SunriseSunset = ({ ...props }: Object) => {
   return (
     <div>
-      <p>I am the SunriseSunset component.</p>
+      <p>Sunrise is at {props.sunriseHour}:{props.sunriseMinute}.</p>
+      <p>Sunset is at {props.sunsetHour}:{props.sunsetMinute}.</p>
     </div>
   );
 };

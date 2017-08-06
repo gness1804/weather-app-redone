@@ -236,7 +236,7 @@ export default class InputArea extends ReactQueryParams {
             </select>
           </label>
         </fieldset>
-        {this.state.showSunriseSunset && this.state.sunriseHour && this.state.sunsetHour ? <SunriseSunset /> : ''}
+        {this.state.showSunriseSunset && this.state.sunriseHour && this.state.sunsetHour ? <SunriseSunset {...this.state} /> : ''}
         <button onClick={this.getSunriseSunset}>Get Sunrise/Sunset</button>
         <WeatherButton id="get-weather-button" text="Get Weather" handleClick={this.getWeatherData} />
         {this.state.weather.length ? <div className="weather-list-container">
