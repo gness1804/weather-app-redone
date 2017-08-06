@@ -10,4 +10,13 @@
   .wu-logo-container img {
     max-width: 70%;
   }
+
+  .wu-logo-caption-text {
+    font-size: 0.75rem;
+  }
+
+  .clear-city-icon img {
+    height: 2rem;
+    margin-top: 1rem;
+  }
 }
