@@ -13,6 +13,10 @@ export default class InputArea extends ReactQueryParams {
       weather: [],
       city: '',
       state: '',
+      sunriseHour: '',
+      sunriseMinute: '',
+      sunsetHour: '',
+      sunsetMinute: '',
     };
   }
 
@@ -20,6 +24,10 @@ export default class InputArea extends ReactQueryParams {
     weather: Array<Object>,
     city: string,
     state: string,
+    sunriseHour: string,
+    sunriseMinute: string,
+    sunsetHour: string,
+    sunsetMinute: string,
   }
 
   componentDidMount = async (): void => {
@@ -81,6 +89,34 @@ export default class InputArea extends ReactQueryParams {
           const data = JSON.parse(hitAPI.responseText);
           if (data && data.forecast && typeof data.forecast !== 'undefined') {
             this.setState({ weather: data.forecast.txt_forecast.forecastday });
+          } else {
+            alert('Oops, bad data. Please check your city and state and try again.');
+          }
+        }
+      }
+    };
+  };
+
+  getSunriseSunset = (): void => {
+    const hitAPI = new XMLHttpRequest();
+    const city = this.state.city.toUpperCase();
+    const _state = this.state.state;
+    if (!city || !_state) {
+      alert('Error: you must enter a valid city and state.');
+      return;
+    }
+    const url = `http://api.wunderground.com/api/47fe8304fc0c9639/astronomy/q/${_state}/${city}.json`;
+    hitAPI.open('GET', url, true);
+    hitAPI.send();
+    hitAPI.onreadystatechange = () => {
+      if (hitAPI.readyState === XMLHttpRequest.DONE) {
+        if (hitAPI.status === 200) {
+          const data = JSON.parse(hitAPI.responseText);
+          if (data && data.sun_phase && typeof data.sun_phase !== 'undefined') {
+            this.setState({ sunriseHour: data.sun_phase.sunrise.hour });
+            this.setState({ sunriseMinute: data.sun_phase.sunrise.minute });
+            this.setState({ sunsetHour: data.sun_phase.sunset.hour });
+            this.setState({ sunsetMinute: data.sun_phase.sunset.minute });
           } else {
             alert('Oops, bad data. Please check your city and state and try again.');
           }
@@ -195,6 +231,7 @@ export default class InputArea extends ReactQueryParams {
             </select>
           </label>
         </fieldset>
+        <button onClick={this.getSunriseSunset}>Get Sunrise/Sunset</button>
         <WeatherButton id="get-weather-button" text="Get Weather" handleClick={this.getWeatherData} />
         {this.state.weather.length ? <div className="weather-list-container">
           <WeatherList data={this.state.weather} city={this.state.city} />
