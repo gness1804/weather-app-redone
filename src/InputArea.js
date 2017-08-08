@@ -45,13 +45,13 @@ export default class InputArea extends ReactQueryParams {
     };
     if (city && state) {
       await this.setState({ city });
-      Cookies.set('city', city, { expires: 7 });
+      Cookies.set('FWcity', city, { expires: 7 });
       if (state.length === 2) {
         this.setState({ state: state.toUpperCase() });
-        Cookies.set('state', state.toUpperCase(), { expires: 7 });
+        Cookies.set('FWstate', state.toUpperCase(), { expires: 7 });
       } else {
         this.setState({ state: abbrState(state, 'abbr') });
-        Cookies.set('state', abbrState(state, 'abbr'), { expires: 7 });
+        Cookies.set('FWstate', abbrState(state, 'abbr'), { expires: 7 });
       }
       try {
         await this.getWeatherData();
@@ -75,8 +75,8 @@ export default class InputArea extends ReactQueryParams {
           const data = JSON.parse(hitAPI.responseText);
           this.setState({ city: data.location.city });
           this.setState({ state: data.location.state });
-          Cookies.set('city', data.location.city, { expires: 7 });
-          Cookies.set('state', data.location.state, { expires: 7 });
+          Cookies.set('FWcity', data.location.city, { expires: 7 });
+          Cookies.set('FWstate', data.location.state, { expires: 7 });
         }
       }
     };
