@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import ReactQueryParams from 'react-query-params';
+import * as Cookies from 'js-cookie';
 import WeatherButton from './WeatherButton';
 import WeatherList from './WeatherList';
 import NoWeatherData from './NoWeatherData';
@@ -39,15 +40,18 @@ export default class InputArea extends ReactQueryParams {
       this.getCoordData(pos.coords.latitude, pos.coords.longitude);
     };
     const failure = () => {
-      this.setState({ city: 'Denver' });
-      this.setState({ state: 'CO' });
+      this.setState({ city: '' });
+      this.setState({ state: 'Choose a State' });
     };
     if (city && state) {
       await this.setState({ city });
+      Cookies.set('city', city, { expires: 7 });
       if (state.length === 2) {
         this.setState({ state: state.toUpperCase() });
+        Cookies.set('state', state.toUpperCase(), { expires: 7 });
       } else {
         this.setState({ state: abbrState(state, 'abbr') });
+        Cookies.set('state', abbrState(state, 'abbr'), { expires: 7 });
       }
       try {
         await this.getWeatherData();
@@ -56,6 +60,7 @@ export default class InputArea extends ReactQueryParams {
       }
       return;
     }
+    //if no stored location cookie, do the geolocation
     navigator.geolocation.getCurrentPosition(success, failure);
   }
 
@@ -70,6 +75,8 @@ export default class InputArea extends ReactQueryParams {
           const data = JSON.parse(hitAPI.responseText);
           this.setState({ city: data.location.city });
           this.setState({ state: data.location.state });
+          Cookies.set('city', data.location.city, { expires: 7 });
+          Cookies.set('state', data.location.state, { expires: 7 });
         }
       }
     };
