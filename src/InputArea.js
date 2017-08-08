@@ -60,7 +60,12 @@ export default class InputArea extends ReactQueryParams {
       }
       return;
     }
-    //if no stored location cookie, do the geolocation
+    //if no stored location cookies, do the geolocation, else load the cookies
+    if (Cookies.get('city') && Cookies.get('state')) {
+      this.setState({ city: Cookies.get('city') });
+      this.setState({ state: Cookies.get('state') });
+      return;
+    }
     navigator.geolocation.getCurrentPosition(success, failure);
   }
 
