@@ -1,6 +1,6 @@
 ## Weathrly 3.0
 
-![Screenshot](public/screenshot-1.png)
+![Screenshot](public/screenshot.png)
 
 [Check it out!](https://gness1804.github.io/weather-app-redone/)
 
