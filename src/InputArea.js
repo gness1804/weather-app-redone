@@ -7,6 +7,7 @@ import WeatherList from './WeatherList';
 import NoWeatherData from './NoWeatherData';
 import SunriseSunset from './SunriseSunset';
 import abbrState from './helpers/abbrState';
+import capitalize from './helpers/capitalize';
 
 export default class InputArea extends ReactQueryParams {
   constructor(props: Object) {
@@ -44,8 +45,8 @@ export default class InputArea extends ReactQueryParams {
       this.setState({ state: 'Choose a State' });
     };
     if (city && state) {
-      await this.setState({ city });
-      Cookies.set('city', city, { expires: 7 });
+      await this.setState({ city: capitalize(city) });
+      Cookies.set('city', capitalize(city), { expires: 7 });
       if (state.length === 2) {
         this.setState({ state: state.toUpperCase() });
         Cookies.set('state', state.toUpperCase(), { expires: 7 });
@@ -77,9 +78,9 @@ export default class InputArea extends ReactQueryParams {
       if (hitAPI.readyState === XMLHttpRequest.DONE) {
         if (hitAPI.status === 200) {
           const data = JSON.parse(hitAPI.responseText);
-          this.setState({ city: data.location.city });
+          this.setState({ city: capitalize(data.location.city) });
           this.setState({ state: data.location.state });
-          Cookies.set('city', data.location.city, { expires: 7 });
+          Cookies.set('city', capitalize(data.location.city), { expires: 7 });
           Cookies.set('state', data.location.state, { expires: 7 });
         }
       }
@@ -88,7 +89,7 @@ export default class InputArea extends ReactQueryParams {
 
   getWeatherData = (): void => {
     const hitAPI = new XMLHttpRequest();
-    const city = this.state.city.toUpperCase();
+    const city = capitalize(this.state.city);
     const _state = this.state.state;
     if (!city || !_state) {
       alert('Error: you must enter a valid city and state.');
@@ -122,7 +123,7 @@ export default class InputArea extends ReactQueryParams {
 
   getSunriseSunset = (): void => {
     const hitAPI = new XMLHttpRequest();
-    const city = this.state.city.toUpperCase();
+    const city = capitalize(this.state.city);
     const _state = this.state.state;
     if (!city || !_state) {
       alert('Error: you must enter a valid city and state.');
