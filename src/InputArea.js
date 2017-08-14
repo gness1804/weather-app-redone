@@ -116,7 +116,7 @@ export default class InputArea extends ReactQueryParams {
           if (data && data.forecast && typeof data.forecast !== 'undefined') {
             this.setState({ weather: data.forecast.txt_forecast.forecastday });
             this.setQueryParams({
-              city: this.state.city,
+              city,
               state: _state,
             });
             const cookieCity = Cookies.get('city');
@@ -159,7 +159,7 @@ export default class InputArea extends ReactQueryParams {
             this.setState({ showSunriseSunset: true });
             this.setState({ weather: [] });
             this.setQueryParams({
-              city: this.state.city,
+              city,
               state: _state,
             });
           } else {
