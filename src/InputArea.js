@@ -45,6 +45,7 @@ export default class InputArea extends ReactQueryParams {
       this.setState({ state: 'Choose a State' });
     };
     if (city && state) {
+      // there are query params
       await this.setState({ city: capitalize(city) });
       Cookies.set('city', capitalize(city), { expires: 7 });
       if (state.length === 2) {
@@ -128,6 +129,8 @@ export default class InputArea extends ReactQueryParams {
               Cookies.set('state', this.state.state, { expires: 7 });
             }
           } else {
+            this.setState({ city: '' });
+            this.setState({ state: '' });
             alert('Oops, bad data. Please check your city and state and try again.');
           }
         }
