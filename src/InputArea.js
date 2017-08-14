@@ -64,7 +64,10 @@ export default class InputArea extends ReactQueryParams {
     if (Cookies.get('city') && Cookies.get('state')) {
       this.setState({ city: Cookies.get('city') });
       this.setState({ state: Cookies.get('state') });
-       //set query params to new city and state
+      this.setQueryParams({
+        city: Cookies.get('city'),
+        state: Cookies.get('state'),
+      });
       return;
     }
     navigator.geolocation.getCurrentPosition(success, failure);
@@ -79,11 +82,16 @@ export default class InputArea extends ReactQueryParams {
       if (hitAPI.readyState === XMLHttpRequest.DONE) {
         if (hitAPI.status === 200) {
           const data = JSON.parse(hitAPI.responseText);
-          this.setState({ city: data.location.city });
-          this.setState({ state: data.location.state });
-           //set query params to new city and state
-          Cookies.set('city', data.location.city, { expires: 7 });
-          Cookies.set('state', data.location.state, { expires: 7 });
+          const newCity = data.location.city;
+          const newState = data.location.state;
+          this.setState({ city: newCity });
+          this.setState({ state: newState });
+          this.setQueryParams({
+            city: newCity,
+            state: newState,
+          });
+          Cookies.set('city', newCity, { expires: 7 });
+          Cookies.set('state', newState, { expires: 7 });
         }
       }
     };
@@ -150,7 +158,10 @@ export default class InputArea extends ReactQueryParams {
             this.setState({ sunsetMinute: data.sun_phase.sunset.minute });
             this.setState({ showSunriseSunset: true });
             this.setState({ weather: [] });
-             //set query params to new city and state
+            this.setQueryParams({
+              city: this.state.city,
+              state: _state,
+            });
           } else {
             alert('Oops, bad data. Please check your city and state and try again.');
           }
