@@ -44,6 +44,7 @@ export default class InputArea extends ReactQueryParams {
       this.setState({ state: 'Choose a State' });
     };
     if (city && state) {
+      // there are query params
       await this.setState({ city });
       Cookies.set('city', city, { expires: 7 });
       if (state.length === 2) {
@@ -63,6 +64,7 @@ export default class InputArea extends ReactQueryParams {
     if (Cookies.get('city') && Cookies.get('state')) {
       this.setState({ city: Cookies.get('city') });
       this.setState({ state: Cookies.get('state') });
+       //set query params to new city and state
       return;
     }
     navigator.geolocation.getCurrentPosition(success, failure);
@@ -79,6 +81,7 @@ export default class InputArea extends ReactQueryParams {
           const data = JSON.parse(hitAPI.responseText);
           this.setState({ city: data.location.city });
           this.setState({ state: data.location.state });
+           //set query params to new city and state
           Cookies.set('city', data.location.city, { expires: 7 });
           Cookies.set('state', data.location.state, { expires: 7 });
         }
@@ -104,6 +107,10 @@ export default class InputArea extends ReactQueryParams {
           const data = JSON.parse(hitAPI.responseText);
           if (data && data.forecast && typeof data.forecast !== 'undefined') {
             this.setState({ weather: data.forecast.txt_forecast.forecastday });
+            this.setQueryParams({
+              city: this.state.city,
+              state: _state,
+            });
             const cookieCity = Cookies.get('city');
             const cookieState = Cookies.get('state');
             if (this.state.city !== cookieCity) {
@@ -143,6 +150,7 @@ export default class InputArea extends ReactQueryParams {
             this.setState({ sunsetMinute: data.sun_phase.sunset.minute });
             this.setState({ showSunriseSunset: true });
             this.setState({ weather: [] });
+             //set query params to new city and state
           } else {
             alert('Oops, bad data. Please check your city and state and try again.');
           }
