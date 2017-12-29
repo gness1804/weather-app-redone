@@ -36,10 +36,10 @@ export default class InputArea extends ReactQueryParams {
 
   componentDidMount = async (): void => {
     const { city, state } = this.queryParams;
-    const success = (pos: Object) => {
+    const success = (pos: Object): void => {
       this.getCoordData(pos.coords.latitude, pos.coords.longitude);
     };
-    const failure = () => {
+    const failure = (): void => {
       this.setState({ city: '' });
       this.setState({ state: 'Choose a State' });
     };
@@ -178,6 +178,10 @@ export default class InputArea extends ReactQueryParams {
     this.setState({ city: '' });
   }
 
+  geolocate = (): void => {
+
+  }
+
   handleInputChange = (e: Object): void => {
     if (e.keyCode === 13) {
       this.getWeatherData();
@@ -219,6 +223,11 @@ export default class InputArea extends ReactQueryParams {
               <img src="cancel-circle.png" alt="Clear city field." />
             </button>
           </label>
+
+          <button onClick={this.geolocate} className="unstyled-button geolocate-icon">
+            <img src="cancel-circle.png" alt="Geolocate." />
+          </button>
+
           <label htmlFor="us-state-input" className="fieldset-right-item"><span>Your State:</span>
             <select
               id="us-state-list"
