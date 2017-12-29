@@ -36,13 +36,6 @@ export default class InputArea extends ReactQueryParams {
 
   componentDidMount = async (): void => {
     const { city, state } = this.queryParams;
-    const success = (pos: Object): void => {
-      this.getCoordData(pos.coords.latitude, pos.coords.longitude);
-    };
-    const failure = (): void => {
-      this.setState({ city: '' });
-      this.setState({ state: 'Choose a State' });
-    };
     if (city && state) {
       // there are query params
       await this.setState({ city });
@@ -70,7 +63,7 @@ export default class InputArea extends ReactQueryParams {
       });
       return;
     }
-    navigator.geolocation.getCurrentPosition(success, failure);
+    this.geolocate();
   }
 
   getCoordData = (lat: string, lng: string): void => {
@@ -179,7 +172,14 @@ export default class InputArea extends ReactQueryParams {
   }
 
   geolocate = (): void => {
-
+    const success = (pos: Object): void => {
+      this.getCoordData(pos.coords.latitude, pos.coords.longitude);
+    };
+    const failure = (): void => {
+      this.setState({ city: '' });
+      this.setState({ state: 'Choose a State' });
+    };
+    navigator.geolocation.getCurrentPosition(success, failure);
   }
 
   handleInputChange = (e: Object): void => {
