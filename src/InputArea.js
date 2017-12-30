@@ -174,6 +174,7 @@ export default class InputArea extends ReactQueryParams {
   geolocate = (): void => {
     const success = (pos: Object): void => {
       this.getCoordData(pos.coords.latitude, pos.coords.longitude);
+      this.setState({ weather: [] });
     };
     const failure = (): void => {
       this.setState({ city: '' });
