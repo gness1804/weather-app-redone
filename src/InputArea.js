@@ -225,7 +225,7 @@ export default class InputArea extends ReactQueryParams {
           </label>
 
           <button onClick={this.geolocate} className="unstyled-button geolocate-icon">
-            <img src="cancel-circle.png" alt="Geolocate." />
+            <img src="target.png" alt="Geolocate." />
           </button>
 
           <label htmlFor="us-state-input" className="fieldset-right-item"><span>Your State:</span>
