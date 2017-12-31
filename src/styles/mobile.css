@@ -28,4 +28,8 @@
   .hide-sunrise-sunset-button img {
     height: 2rem;
   }
+
+  .geolocate-icon {
+    margin: 20px auto;
+  }
 }

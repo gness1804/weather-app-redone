@@ -36,13 +36,6 @@ export default class InputArea extends ReactQueryParams {
 
   componentDidMount = async (): void => {
     const { city, state } = this.queryParams;
-    const success = (pos: Object) => {
-      this.getCoordData(pos.coords.latitude, pos.coords.longitude);
-    };
-    const failure = () => {
-      this.setState({ city: '' });
-      this.setState({ state: 'Choose a State' });
-    };
     if (city && state) {
       // there are query params
       await this.setState({ city });
@@ -70,7 +63,7 @@ export default class InputArea extends ReactQueryParams {
       });
       return;
     }
-    navigator.geolocation.getCurrentPosition(success, failure);
+    this.geolocate();
   }
 
   getCoordData = (lat: string, lng: string): void => {
@@ -178,6 +171,18 @@ export default class InputArea extends ReactQueryParams {
     this.setState({ city: '' });
   }
 
+  geolocate = (): void => {
+    const success = (pos: Object): void => {
+      this.getCoordData(pos.coords.latitude, pos.coords.longitude);
+      this.setState({ weather: [] });
+    };
+    const failure = (): void => {
+      this.setState({ city: '' });
+      this.setState({ state: 'Choose a State' });
+    };
+    navigator.geolocation.getCurrentPosition(success, failure);
+  }
+
   handleInputChange = (e: Object): void => {
     if (e.keyCode === 13) {
       this.getWeatherData();
@@ -219,6 +224,11 @@ export default class InputArea extends ReactQueryParams {
               <img src="cancel-circle.png" alt="Clear city field." />
             </button>
           </label>
+
+          <button onClick={this.geolocate} className="unstyled-button geolocate-icon">
+            <img src="target.png" alt="Geolocate." />
+          </button>
+
           <label htmlFor="us-state-input" className="fieldset-right-item"><span>Your State:</span>
             <select
               id="us-state-list"
