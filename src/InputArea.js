@@ -183,6 +183,7 @@ export default class InputArea extends ReactQueryParams {
     const success = (pos: Object): void => {
       this.getCoordData(pos.coords.latitude, pos.coords.longitude);
       this.clearWeather();
+      this.hideSunriseSunset();
     };
     const failure = (): void => {
       if (mounted && typeof mounted === 'string') {
