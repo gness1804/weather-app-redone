@@ -63,7 +63,7 @@ export default class InputArea extends ReactQueryParams {
       });
       return;
     }
-    this.geolocate();
+    this.geolocate('momounted?: stringunted');
   }
 
   getCoordData = (lat: string, lng: string): void => {
@@ -150,7 +150,7 @@ export default class InputArea extends ReactQueryParams {
             this.setState({ sunsetHour: data.sun_phase.sunset.hour });
             this.setState({ sunsetMinute: data.sun_phase.sunset.minute });
             this.setState({ showSunriseSunset: true });
-            this.setState({ weather: [] });
+            this.clearWeather();
             this.setQueryParams({
               city: this.state.city,
               state: _state,
@@ -171,14 +171,26 @@ export default class InputArea extends ReactQueryParams {
     this.setState({ city: '' });
   }
 
-  geolocate = (): void => {
+  clearState = (): void => {
+    this.setState({ state: 'Choose a State' });
+  }
+
+  clearWeather = (): void => {
+    this.setState({ weather: [] });
+  }
+
+  geolocate = (mounted?: string): void => {
     const success = (pos: Object): void => {
       this.getCoordData(pos.coords.latitude, pos.coords.longitude);
-      this.setState({ weather: [] });
+      this.clearWeather();
     };
     const failure = (): void => {
-      this.setState({ city: '' });
-      this.setState({ state: 'Choose a State' });
+      if (mounted && typeof mounted === 'string') {
+        this.clearCity();
+        this.clearState();
+        return;
+      }
+      alert('Geolocation failed or was blocked by the browser. Please adjust your browser settings or enter your location a different way.');
     };
     navigator.geolocation.getCurrentPosition(success, failure);
   }
