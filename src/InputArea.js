@@ -211,7 +211,12 @@ export default class InputArea extends ReactQueryParams {
 
   render() {
     const citiesList = cities.map((place: Object) => {
-      return <option value={place.city} key={place.id}>{place.city}</option>;
+      return (<option
+        value={place.city}
+        key={place.id}
+      >
+        {place.city}
+      </option>);
     });
 
     return (
