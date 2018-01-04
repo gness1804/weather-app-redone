@@ -7,6 +7,7 @@ import WeatherList from './WeatherList';
 import NoWeatherData from './NoWeatherData';
 import SunriseSunset from './SunriseSunset';
 import abbrState from './helpers/abbrState';
+import cities from './helpers/cities';
 
 export default class InputArea extends ReactQueryParams {
   constructor(props: Object) {
@@ -209,6 +210,10 @@ export default class InputArea extends ReactQueryParams {
   }
 
   render() {
+    const citiesList = cities.map((place: Object) => {
+      return <option value={place.city} key={place.id}>{place.city}</option>;
+    });
+
     return (
       <div>
         <fieldset className="box">
@@ -222,16 +227,7 @@ export default class InputArea extends ReactQueryParams {
               value={this.state.city}
             />
             <datalist id="current-loc-list">
-              <option value="Atlanta">Atlanta</option>
-              <option value="Boston">Boston</option>
-              <option value="Chicago">Chicago</option>
-              <option value="Denver">Denver</option>
-              <option value="Detroit">Detroit</option>
-              <option value="Houston">Houston</option>
-              <option value="Los Angeles">Los Angeles</option>
-              <option value="New Orleans">New Orleans</option>
-              <option value="San Francisco">San Francisco</option>
-              <option value="St Louis">St Louis</option>
+              {citiesList}
             </datalist>
             <button onClick={this.clearCity} className="unstyled-button clear-city-icon">
               <img src="cancel-circle.png" alt="Clear city field." />
