@@ -7,6 +7,7 @@ import WeatherList from './WeatherList';
 import NoWeatherData from './NoWeatherData';
 import SunriseSunset from './SunriseSunset';
 import abbrState from './helpers/abbrState';
+import getState from './helpers/getState';
 import cities from './helpers/cities';
 
 export default class InputArea extends ReactQueryParams {
@@ -203,6 +204,7 @@ export default class InputArea extends ReactQueryParams {
       return;
     }
     this.setState({ city: e.target.value });
+    this.setState({ state: getState(e.target.value) });
   }
 
   handleInputChangeState = (e: Object): void => {
