@@ -1,64 +1,66 @@
 // @flow
 
+import md5 from 'md5';
+
 const cities = [
   {
-    id: 1,
+    id: md5('Atlanta'),
     city: 'Atlanta',
   },
   {
-    id: 2,
+    id: md5('Austin'),
     city: 'Austin',
   },
   {
-    id: 3,
+    id: md5('Blacksburg'),
     city: 'Blacksburg',
   },
   {
-    id: 4,
+    id: md5('Boston'),
     city: 'Boston',
   },
   {
-    id: 5,
+    id: md5('Bryan'),
     city: 'Bryan',
   },
   {
-    id: 6,
+    id: md5('Chicago'),
     city: 'Chicago',
   },
   {
-    id: 7,
+    id: md5('Clemson'),
     city: 'Clemson',
   },
   {
-    id: 8,
+    id: md5('Denver'),
     city: 'Denver',
   },
   {
-    id: 9,
+    id: md5('Detroit'),
     city: 'Detroit',
   },
   {
-    id: 10,
+    id: md5('Houston'),
     city: 'Houston',
   },
   {
-    id: 11,
+    id: md5('Los Angeles'),
     city: 'Los Angeles',
   },
   {
-    id: 12,
+    id: md5('New Orleans'),
     city: 'New Orleans',
   },
   {
-    id: 13,
+    id: md5('North Billerica'),
     city: 'North Billerica',
   },
   {
-    id: 14,
+    id: md5('San Francisco'),
     city: 'San Francisco',
   },
   {
-    id: 15,
+    id: md5('St Louis'),
     city: 'St Louis',
   },
 ];
