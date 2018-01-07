@@ -8,6 +8,7 @@ import NoWeatherData from './NoWeatherData';
 import SunriseSunset from './SunriseSunset';
 import abbrState from './helpers/abbrState';
 import getState from './helpers/getState';
+import checkForSafari from './helpers/checkForSafari';
 import cities from './helpers/cities';
 
 export default class InputArea extends ReactQueryParams {
@@ -65,7 +66,7 @@ export default class InputArea extends ReactQueryParams {
       });
       return;
     }
-    this.geolocate('momounted?: stringunted');
+    this.geolocate('mounted');
   }
 
   getCoordData = (lat: string, lng: string): void => {
@@ -220,6 +221,10 @@ export default class InputArea extends ReactQueryParams {
         {place.city}
       </option>);
     });
+    let safariDropdown = null;
+    if (checkForSafari(navigator.userAgent)) {
+      safariDropdown = <p>I should only appear in Safari.</p>;
+    }
 
     return (
       <div>
@@ -240,7 +245,8 @@ export default class InputArea extends ReactQueryParams {
               <img src="cancel-circle.png" alt="Clear city field." />
             </button>
           </label>
-
+          {/*<p>Sanity check</p>*/}
+          {safariDropdown}
           <button onClick={this.geolocate} className="unstyled-button geolocate-icon">
             <img src="target.png" alt="Geolocate." />
           </button>
