@@ -16,6 +16,7 @@
     "eslint-config-airbnb": "^15.0.1",
     "flow-remove-types": "^1.2.1",
     "js-cookie": "^2.1.4",
+    "md5": "^2.2.1",
     "mocha": "^3.4.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
