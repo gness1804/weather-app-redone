@@ -11,10 +11,16 @@ const statesObj = {
   Denver: 'CO',
   Detroit: 'MI',
   Houston: 'TX',
+  LosAngeles: 'CA',
+  NewOrleans: 'LA',
+  NorthBillerica: 'MA',
+  SanFrancisco: 'CA',
+  StLouis: 'MO',
 };
 
 const getState = (city: string): string => {
-  return statesObj[city];
+  const modifiedCity = city.split(' ').join('');
+  return statesObj[modifiedCity];
 };
 
 export default getState;
