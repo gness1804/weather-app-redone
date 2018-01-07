@@ -1,6 +1,7 @@
 // @flow
 
 const statesObj = {
+  AnnArbor: 'MI',
   Atlanta: 'GA',
   Austin: 'TX',
   Blacksburg: 'VA',
@@ -8,6 +9,7 @@ const statesObj = {
   Bryan: 'TX',
   Chicago: 'IL',
   Clemson: 'SC',
+  Clover: 'SC',
   Denver: 'CO',
   Detroit: 'MI',
   Houston: 'TX',

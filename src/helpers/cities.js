@@ -4,6 +4,10 @@ import md5 from 'md5';
 
 const cities = [
   {
+    id: md5('Ann Arbor'),
+    city: 'Ann Arbor',
+  },
+  {
     id: md5('Atlanta'),
     city: 'Atlanta',
   },
@@ -30,6 +34,10 @@ const cities = [
   {
     id: md5('Clemson'),
     city: 'Clemson',
+  },
+  {
+    id: md5('Clover'),
+    city: 'Clover',
   },
   {
     id: md5('Denver'),
