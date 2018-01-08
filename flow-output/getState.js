@@ -25,4 +25,4 @@ const getState = (city        )         => {
   return statesObj[modifiedCity];
 };
 
-export default getState;
+module.exports = getState;
