@@ -12,4 +12,4 @@ const checkForSafari = (browser        )          => {
 
 module.exports = {
   checkForSafari,
-}
+};
