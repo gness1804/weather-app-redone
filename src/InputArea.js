@@ -8,7 +8,7 @@ import NoWeatherData from './NoWeatherData';
 import SunriseSunset from './SunriseSunset';
 import abbrState from './helpers/abbrState';
 import getState from './helpers/getState';
-import checkForSafari from './helpers/checkForSafari';
+import { checkForSafari } from './helpers/checkForSafari';
 import cities from './helpers/cities';
 
 export default class InputArea extends ReactQueryParams {

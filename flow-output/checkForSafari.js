@@ -1,6 +1,6 @@
-// @flow
+//      
 
-const checkForSafari = (browser: string): boolean => {
+const checkForSafari = (browser        )          => {
   const regex1 = /chrome/i;
   const regex2 = /chromium/i;
   const regex3 = /safari/i;
@@ -12,4 +12,4 @@ const checkForSafari = (browser: string): boolean => {
 
 module.exports = {
   checkForSafari,
-};
+}

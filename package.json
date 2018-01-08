@@ -4,20 +4,20 @@
   "private": true,
   "homepage": "https://gness1804.github.io/weather-app-redone/",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.47.0",
     "gh-pages": "^1.0.0",
     "react-scripts": "1.0.10"
   },
   "dependencies": {
-    "chai": "^4.0.2",
+    "chai": "^4.1.2",
     "enzyme": "^2.9.1",
     "eslint-config-airbnb": "^15.0.1",
-    "flow-remove-types": "^1.2.1",
+    "flow-remove-types": "^1.2.3",
     "js-cookie": "^2.1.4",
     "md5": "^2.2.1",
-    "mocha": "^3.4.2",
+    "mocha": "^3.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-query-params": "^1.0.7",
@@ -32,6 +32,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "alldeploy": "scripts/alldeploy.sh"
+    "alldeploy": "scripts/alldeploy.sh",
+    "build-flow": "flow-remove-types src/helpers/ -d flow-output/",
+     "unit": "npm run build-flow && mocha"
   }
 }
